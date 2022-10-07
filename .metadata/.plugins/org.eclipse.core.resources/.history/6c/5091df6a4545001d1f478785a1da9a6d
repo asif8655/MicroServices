@@ -1,0 +1,35 @@
+package com.ms;
+
+import java.math.BigDecimal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.ms.model.CurrencyExcchange;
+import com.ms.repository.ExchangeRepository;
+
+@SpringBootApplication
+public class MicroServiceForexApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MicroServiceForexApplication.class, args);
+	}
+	
+	@Autowired
+	private ExchangeRepository repo;
+	
+	@Bean
+	public void add()
+	{
+		repo.save(new CurrencyExcchange(1001L, "USD", "INR", new BigDecimal(80.0)));
+		repo.save(new CurrencyExcchange(1002L, "USD", "EUR", new BigDecimal(70.0)));
+		repo.save(new CurrencyExcchange(1003L, "USD", "SGP", new BigDecimal(60.0)));
+		repo.save(new CurrencyExcchange(1004L, "SGP", "INR", new BigDecimal(67.0)));
+		repo.save(new CurrencyExcchange(1005L, "INR", "DBP", new BigDecimal(50.0)));
+		
+	}
+
+
+}

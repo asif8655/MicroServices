@@ -1,0 +1,10 @@
+package com.ms.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.ms.model.CurrencyExcchange1;
+
+public interface ExchangeRepository extends CrudRepository<CurrencyExcchange1, Long>{
+
+	public CurrencyExcchange1 findByFromAndTo(String from,String to);
+}
